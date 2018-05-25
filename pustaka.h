@@ -12,10 +12,8 @@ typedef struct{
     char nama[50];
 }kalender;
 
-kalender makeKegiatan(char kegiatan[], int tanggal, int waktu, char nama[]);
-
 void menu();
-void inputKegiatan(kalender P);
-void showKegiatan(kalender P);
+void inputKegiatan();
+void showKegiatan();
 
 #endif // PUSTAKA_H_INCLUDED
