@@ -13,18 +13,21 @@ kalender makeKegiatan(char kegiatan[], int tanggal, int waktu, char nama[]){
     kalender baru;
     strcpy(baru.kegiatan, kegiatan);
     strcpy(baru.nama, nama);
-    baru.tanggal = tang;
-    baru.waktu = wak;
+    baru.tanggal = tanggal;
+    baru.waktu = waktu;
+
+    return baru;
 }
 
 void inputKegiatan(){
     kalender P;
     printf("Masukan Namak Kegiatan = "); gets(P.kegiatan);
+    printf("Masukkan nama terkait = "); gets(P.nama);
     printf("Masukan tanggal kegiatan = "); scanf("%d", &P.tanggal);
     printf("Masukkan Waktu Kegiatan = "); scanf("%d", &P.waktu);
-    printf("Masukkan nama terkait = "); gets(P.nama);
 }
 
-void showKegiatan(kalender P){
+void showKegiatan(){
+    kalender P;
     printf("%d %s %d %s", P.tanggal, P.kegiatan, P.waktu, P.nama);
 }
