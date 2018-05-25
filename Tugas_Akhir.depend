@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1527169430 source:/home/grafiters/Documents/tugas Kuliah/Tugas_Akhir/main.c
+	"pustaka.h"
+
+1527169434 /home/grafiters/Documents/tugas Kuliah/Tugas_Akhir/pustaka.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1527169165 source:/home/grafiters/Documents/tugas Kuliah/Tugas_Akhir/pustaka.c
+	"pustaka.h"
+
