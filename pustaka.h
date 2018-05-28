@@ -6,11 +6,27 @@
 #include <string.h>
 
 typedef struct{
+    int d;
+    int m;
+    int y;
+}tanggal;
+
+typedef struct{
+    int m;
+    int h;
+}waktu;
+
+typedef struct{
     char kegiatan[50];
-    int tanggal;
-    int waktu;
     char nama[50];
+    tanggal tgl;
+    waktu wak;
 }kalender;
+
+kalender data[];
+
+int batas;
+
 
 void menu();
 void inputKegiatan();
