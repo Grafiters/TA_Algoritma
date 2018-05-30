@@ -22,6 +22,10 @@ int main()
             break;
         case 4:
             break;
+        case 5:
+            urutKegiatan(batas);
+            showKegiatan();
+            break;
     }
 
     return 0;
