@@ -26,10 +26,12 @@ typedef struct{
 kalender data[];
 
 int batas;
-
+int tukar(int *num1, int *num2);
+int inner_rec(int data[], int cur, int arrSize);
 
 void menu();
 void inputKegiatan();
 void showKegiatan();
+void urutKegiatan(int batas);
 
 #endif // PUSTAKA_H_INCLUDED
