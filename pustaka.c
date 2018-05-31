@@ -7,14 +7,12 @@ void menu(){ ///  ==> fungsi ini berguna untuk menampilkan menu yan gada
     puts("3. Hapus Kegiatan");
     puts("4. Cari Kegiatan");
     puts("5. Urutkan Kegiatan");
+    puts("6. Credits");
     puts("");
 }
 
-void inputKegiatan(kalender *acara, int batas){ /// ==> fungsi ini berguna untuk menginputkand data atau menambahkan data yang ada kepada client
+void inputKegiatan(kalender *acara){ /// ==> fungsi ini berguna untuk menginputkand data atau menambahkan data yang ada kepada client
     kalender alarm;
-    int i=0;
-    while(i<batas){
-        printf("===== Data Ke - %d =====\n", i+1);
         printf("Masukkan tanggal acara format (dd-mm-yy) = "); scanf("%d-%d-%d", &alarm.tgl.d, &alarm.tgl.m, &alarm.tgl.y);
         if(alarm.tgl.d>31){
             printf("format salah silahkan masukan lagi\n");
@@ -38,39 +36,55 @@ void inputKegiatan(kalender *acara, int batas){ /// ==> fungsi ini berguna untuk
 
         printf("Masukkan Nama Keiagatan = "); gets(alarm.kegiatan);
         printf("Masukkan satu nama yang terkait = "); gets(alarm.nama);
-        i++;
-    }
 
     *acara = alarm;
 
     return acara;
 }
 
-void showAcara(kalender acara, int batas){
-    int i=0;
-    while(i<batas){
+void showAcara(kalender acara){
         printf("Nama Acara = %s \n", acara.kegiatan);
         printf("Tanggal Acara = %d-%d-%d\n", acara.tgl.d,acara.tgl.m, acara.tgl.y);
-        i++;
-    }
 }
 
-void showKegiatan(kalender acara, int batas){
-    int i=0;
-    while(i<batas){
-        printf("No. %d\n", i+1);
-        printf("Nama Acara \t= %s \n", acara.kegiatan);
-        printf("Tanggal Acara \t= %d-%d-%d \n", acara.tgl.d, acara.tgl.m, acara.tgl.y);
-        printf("Waktu Acara \t= %d:%d\n", acara.wak.h, acara.wak.m);
-        printf("Nama bersangkutan = %s \n", acara.nama);
-        i++;
-    }
+void showKegiatan(kalender acara){
+    printf("Nama Acara\t= %s\n", acara.kegiatan);
+    printf("Tanggal Acara \t= %d-%d-%d\n", acara.tgl.d, acara.tgl.m, acara.tgl.y);
+    printf("Waktu Acara \t= %d:%d\n", acara.wak.h, acara.wak.m);
+    printf("Nama bersangkutan = %s\n", acara.nama);
 }
 
-int hitungBatas(int batas){
-    int hasil;
-    hasil = hasil+batas;
-    return hasil;
+int tukarNilai(int *a, int *b){
+    int temp = *a;
+        *a = *b;
+        *b = temp;
+}
+
+void urutNulaiSementara(kalender *a, kalender *b){
+    kalender temp = *a;
+        *a = *b;
+        *b = temp;
+}
+
+void tukarNulaiSementara(int *a, int *b){
+    int temp[limit];
+    int i=0, j, k=0;
+    kalender swap[limit];
+    while(i<limit-1){
+        j=0;
+        while(j<limit-i){
+            if(temp[j]<temp[i]){
+                tukarNilai(&temp[j], &temp[j+1]);
+                tukarNulaiSementara(&swap[j],&swap[j+1]);
+            }
+            j++;
+        }
+        i++;
+    }
+    while(k<limit){
+        showKegiatan(swap[k]);
+        k++;
+    }
 }
 
 void credits(){
