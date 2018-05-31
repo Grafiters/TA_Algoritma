@@ -7,80 +7,76 @@ void menu(){ ///  ==> fungsi ini berguna untuk menampilkan menu yan gada
     puts("3. Hapus Kegiatan");
     puts("4. Cari Kegiatan");
     puts("5. Urutkan Kegiatan");
+    puts("");
 }
 
-void inputKegiatan(){ /// ==> fungsi ini berguna untuk menginputkand data atau menambahkan data yang ada kepada client
+void inputKegiatan(kalender *acara, int batas){ /// ==> fungsi ini berguna untuk menginputkand data atau menambahkan data yang ada kepada client
+    kalender alarm;
     int i=0;
-    printf("Masukan banyak data : "); scanf("%d", &batas);
-
     while(i<batas){
-        printf("No. %d\n", i+1);
-        printf("Masukan tanggal kegiatan (dd-mm-yy) : ");
-        scanf("%d-%d-%d", &data[i].tgl.d, &data[i].tgl.m, &data[i].tgl.y);
-        if(data[i].tgl.d>28 && data[i].tgl.m==2 && data[i].tgl.y%4 != 0){
-            printf("format anda salah silahkan masukkan kembali = ");
-            scanf("%d-%d-%d", &data[i].tgl.d, &data[i].tgl.m, &data[i].tgl.y);
-        }else if(data[i].tgl.d>31){
-            printf("format anda salah silahkan masukkan kembali = ");
-            scanf("%d-%d-%d", &data[i].tgl.d, &data[i].tgl.m, &data[i].tgl.y);
-        }else if(data[i].tgl.m>12){
-            printf("format anda salah silahkan masukkan kembali = ");
-            scanf("%d-%d-%d", &data[i].tgl.d, &data[i].tgl.m, &data[i].tgl.y);
+        printf("===== Data Ke - %d =====\n", i+1);
+        printf("Masukkan tanggal acara format (dd-mm-yy) = "); scanf("%d-%d-%d", &alarm.tgl.d, &alarm.tgl.m, &alarm.tgl.y);
+        if(alarm.tgl.d>31){
+            printf("format salah silahkan masukan lagi\n");
+            printf("Masukan hari dd = "); scanf("%d", &alarm.tgl.d);
+        }else if(alarm.tgl.m>12){
+            printf("format salah silahkan masukan lagi\n");
+            printf("Masukan bulan mm = "); scanf("%d", &alarm.tgl.m);
+        }else if(alarm.tgl.d==28 && alarm.tgl.m==2 && alarm.tgl.y%4!=0){
+            printf("format salah silahkan masukan lagi\n");
+            printf("Masukkan tanggal acara format (dd-mm-yy) = "); scanf("%d-%d-%d", &alarm.tgl.d, &alarm.tgl.m, &alarm.tgl.y);
         }
 
-        puts("");
-        printf("Masukkan waktu kegiatan (hh:mm) : ");
-        scanf("%d-%d", &data[i].wak.h, &data[i].wak.m);
-        if(data[i].wak.h>23){
-            printf("format anda salah silahkan masukkan kembali = ");
-            scanf("%d-%d", &data[i].wak.h, &data[i].wak.m);
-        }else if(data[i].wak.m>59){
-            printf("format anda salah silahkan masukkan kembali = ");
-            scanf("%d-%d", &data[i].wak.h, &data[i].wak.m);
+        printf("Masukan waktu dengan format hh:mm (jam:menit) = "); scanf("%d:%d", &alarm.wak.h, &alarm.wak.m);
+        if(alarm.wak.h>23 || alarm.wak.m>59){
+            printf("format salah silahkan masukan lagi\n");
+            printf("Masukan waktu dengan format hh:mm (jam:menit) = "); scanf("%d:%d", &alarm.wak.h, &alarm.wak.m);
         }
 
-        puts("");
-        fflush(stdin);
         __fpurge(stdin);
-        printf("Masukkan Nama Kegiatan : "); gets(data[i].kegiatan);
-        printf("Masukkan Nama Terkait : "); gets(data[i].nama);
+        fflush(stdin);
+
+        printf("Masukkan Nama Keiagatan = "); gets(alarm.kegiatan);
+        printf("Masukkan satu nama yang terkait = "); gets(alarm.nama);
+        i++;
+    }
+
+    *acara = alarm;
+
+    return acara;
+}
+
+void showAcara(kalender acara, int batas){
+    int i=0;
+    while(i<batas){
+        printf("Nama Acara = %s \n", acara.kegiatan);
+        printf("Tanggal Acara = %d-%d-%d\n", acara.tgl.d,acara.tgl.m, acara.tgl.y);
         i++;
     }
 }
 
-void showKegiatan(){ /// ==> fungsi ini berguna untuk menampilkan data yang ada pada ADT kalender
+void showKegiatan(kalender acara, int batas){
     int i=0;
     while(i<batas){
         printf("No. %d\n", i+1);
-        printf("Tanggal Kegiatan : %d-%d-%d\n", data[i].tgl.d, data[i].tgl.m, data[i].tgl.y);
-        printf("Nama Kegiatan : %s\n", data[i].kegiatan);
-        printf("Orang Terkait : %s\n", data[i].nama);
-        printf("Waktu Kegiatan : %d:%d", data[i].wak.m, data[i].wak.h);
+        printf("Nama Acara \t= %s \n", acara.kegiatan);
+        printf("Tanggal Acara \t= %d-%d-%d \n", acara.tgl.d, acara.tgl.m, acara.tgl.y);
+        printf("Waktu Acara \t= %d:%d\n", acara.wak.h, acara.wak.m);
+        printf("Nama bersangkutan = %s \n", acara.nama);
         i++;
     }
 }
 
-int tukar(int *num1, int *num2){
-    int temp = *num1;
-        *num1 = *num2;
-        *num2 = temp;
+int hitungBatas(int batas){
+    int hasil;
+    hasil = hasil+batas;
+    return hasil;
 }
 
-int inner_rec(int data[], int cur, int arrSize){
-    if(data[arrSize-1]<data[cur]){
-        return cur=arrSize;
-    }else{
-        return inner_rec(data,cur,arrSize-1);
-    }
-}
-
-void urutKegiatan(int batas){
-    if(batas==0){
-        int post=inner_rec(data,batas-1,batas);
-        tukar(&data[post],&data[batas-1]);
-    }else{
-        int post=inner_rec(data,batas-1,batas);
-        tukar(&data[post],&data[batas-1]);
-        urutKegiatan(batas-1);
-    }
+void credits(){
+    puts("Andwingga");
+    puts("Grafiters");
+    puts("Sendra");
+    puts("Edwin");
+    puts("Thor");
 }

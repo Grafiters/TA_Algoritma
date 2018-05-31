@@ -18,20 +18,18 @@ typedef struct{
 
 typedef struct{
     char kegiatan[50];
-    char nama[50];
+    char nama[50][50];
     tanggal tgl;
     waktu wak;
 }kalender;
 
-kalender data[];
-
-int batas;
-int tukar(int *num1, int *num2);
-int inner_rec(int data[], int cur, int arrSize);
+int hitungBatas(int batas);
 
 void menu();
-void inputKegiatan();
-void showKegiatan();
-void urutKegiatan(int batas);
+void inputKegiatan(kalender *acara, int batas);
+void showAcara(kalender acara, int batas);
+void showKegiatan(kalender acara, int batas);
+
+void credits();
 
 #endif // PUSTAKA_H_INCLUDED
