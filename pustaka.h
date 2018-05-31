@@ -23,13 +23,15 @@ typedef struct{
     waktu wak;
 }kalender;
 
-int hitungBatas(int batas);
-
-void menu();
-void inputKegiatan(kalender *acara, int batas);
-void showAcara(kalender acara, int batas);
-void showKegiatan(kalender acara, int batas);
-
+//int hitungBatas(int batas);
 void credits();
+void menu();
+void inputKegiatan(kalender *acara);
+void showAcara(kalender acara);
+void showKegiatan(kalender acara);
+void urutKegiatan(kalender *acara);
+void tukarNilai(int *a, int *b);
+void tukarNulaiSementara(int *a, int *b);
+void urutKegiatan(kalender acara[], int limit);
 
 #endif // PUSTAKA_H_INCLUDED
