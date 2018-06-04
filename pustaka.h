@@ -26,12 +26,17 @@ typedef struct{
 //int hitungBatas(int batas);
 void credits();
 void menu();
+
 void inputKegiatan(kalender *acara);
+
 void showAcara(kalender acara);
 void showKegiatan(kalender acara);
-void urutKegiatan(kalender *acara);
+
+void cariKegiatan (kalender acara[],char cari_nama[],int batas);
+void hapuskegiatan (kalender acara[],int limit);
+
 void tukarNilai(int *a, int *b);
-void tukarNulaiSementara(int *a, int *b);
+void tukarNilaiSementara(kalender *a, kalender *b);
 void urutKegiatan(kalender acara[], int limit);
 
 #endif // PUSTAKA_H_INCLUDED
