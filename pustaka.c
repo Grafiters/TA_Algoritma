@@ -77,11 +77,9 @@ void cariKegiatan (kalender acara[],char cari_nama[],int batas){
     /*   fungsi ini berguna untuk mencari nilai dari data struct yang ada   */
     /*======================================================================*/
 
-    int a,b;
+    int a;
     char z;
     int banding;
-
-
     for (a=0;a<batas;a++)
     {
         banding=strcmp(acara[a].nama,cari_nama); ///untuk menyamakan data nama dengan nama yang dicari
@@ -94,9 +92,12 @@ void cariKegiatan (kalender acara[],char cari_nama[],int batas){
                 printf("Waktu Acara \t\t= %d:%d\n", acara[a].wak.h, acara[a].wak.m);
                 printf("Nama bersangkutan \t= %s\n", acara[a].nama);
                 puts("");
+            }else{
+                return 0;
             }
         }else{
             printf("data tidak ditemukan\n");
+            return 0;
         }
     }
 }
@@ -165,17 +166,25 @@ void urutKegiatan(kalender acara[], int limit){
         temp[i]=(acara[i].tgl.d/10)+ acara[i].tgl.m+(acara[i].tgl.y*10);
         urut[i]=acara[i];
     }
+
     for (i=0;i<limit;i++){
-        for(j=i;j<limit;j++){
+        for(j=i;j<limit-1;j++){
             if(temp[j]>temp[j+1]){
                 tukarNilai(&temp[j],&temp[j+1]);
                 tukarNilaiSementara(&urut[j],&urut[j+1]);
             }
         }
     }
+
+    for(i=0;i<limit;i++){
+        showKegiatan(urut[i]);
+    }
 }
 
 void credits(){
+    puts("==========================");
+    puts("===== Editor Scripts =====");
+    puts("==========================");
     puts("Andwingga");
     puts("Grafiters");
     puts("Sendra");

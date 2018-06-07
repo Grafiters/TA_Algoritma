@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1528107017 source:/home/grafiters/Documents/tugas Kuliah/Tugas_Akhir/main.c
+1528305487 source:/home/grafiters/Documents/tugas Kuliah/Tugas_Akhir/main.c
 	"pustaka.h"
 
 1528106189 /home/grafiters/Documents/tugas Kuliah/Tugas_Akhir/pustaka.h
@@ -7,6 +7,6 @@
 	<stdlib.h>
 	<string.h>
 
-1528110500 source:/home/grafiters/Documents/tugas Kuliah/Tugas_Akhir/pustaka.c
+1528305680 source:/home/grafiters/Documents/tugas Kuliah/Tugas_Akhir/pustaka.c
 	"pustaka.h"
 

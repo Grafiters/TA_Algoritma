@@ -8,16 +8,18 @@ int main()
 {
     kalender acara[100];
     daftar:
+//    system("clear");
     system("cls");
     menu();
 
     printf("Silahkan pilih Menu = "); scanf("%d", &pilih);
 
-//    __fpurge(stdin);
+    __fpurge(stdin);
     fflush(stdin);
     switch(pilih){
         case 1:
             system("cls");
+//            system("clear");
             printf("Masukan jumlah kegiatan = "); scanf("%d", &jumlah);
             sampai = jumlah + limit;
             int j;
@@ -28,16 +30,18 @@ int main()
                 inputKegiatan(&acara[j]);
             }
             limit += jumlah;
+//            system("clear");
             system("cls");
             goto daftar;
             break;
         case 2:
+//            system("clear");
             system("cls");
             printf("1. lihat acara\n");
             printf("2. lihat details acara\n");
             printf("pilih melihat kegiatan = "); scanf("%d", &p);
             if(p==1){
-//                __fpurge(stdin);
+                __fpurge(stdin);
                 fflush(stdin);
                 int i, k;
                 for(k=0;k<sampai;k++){
@@ -52,8 +56,9 @@ int main()
                 }
             }else if(p==2){
                 int i, k;
+//                system("clear");
                 system("cls");
-//                __fpurge(stdin);
+                __fpurge(stdin);
                 fflush(stdin);
                 for(k=0;k<sampai;k++){
                     printf("No. %d\n", k+1);
@@ -71,8 +76,9 @@ int main()
             }
             break;
         case 3:
+//          system("clear");
             system("cls");
-//            __fpurge(stdin);
+            __fpurge(stdin);
             fflush(stdin);
             int c;
             for(c=0;c<limit;c++){
@@ -97,6 +103,7 @@ int main()
             goto daftar;
             break;
         case 4:
+//            system("clear");
             system("cls");
             int y;
             printf("Masukkan nama yang akan dicari : "); gets(nama);
@@ -110,24 +117,21 @@ int main()
             }
             break;
         case 5:
+//            system("clear");
             system("cls");
-            int f;
-            puts("Urut data \n");
+            int l;
             urutKegiatan(acara,limit);
-            puts("");
-            for (w=0;w<limit;w++)
-            {
-                showKegiatan(acara[w]);
-                printf("ketik 0 untuk kembali ke menu : "); scanf("%d", &f);
-                if(f==0){
+            printf("klik 0 untuk kembali ke menu utama = "); scanf("%d", &l);
+                if(l==0){
                     goto daftar;
                 }else{
-                    printf("good bye");
                     return 0;
                 }
-            }
+//            __fpurge(stdin);
+            fflush(stdin);
             break;
         case 6:
+//            system("clear");
             system("cls");
             credits();
             int a;
@@ -140,7 +144,7 @@ int main()
             break;
         default:
             printf("= Maaf Anda Kurang Beruntung = \n");
-//            __fpurge(stdin);
+ //           __fpurge(stdin);
             fflush(stdin);
     }
     return 0;
